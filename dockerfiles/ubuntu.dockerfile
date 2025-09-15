@@ -1,6 +1,6 @@
 FROM ubuntu:noble
 
-LABEL org.opencontainers.image.source=https://github.com/sambyeol/ocaml-devcontainer
+LABEL org.opencontainers.image.source=https://github.com/chris-armstrong/ocaml-devcontainer
 
 USER root
 
@@ -23,7 +23,7 @@ ARG LOCALE=en_US.UTF-8
 RUN locale-gen ${LOCALE}
 ENV LC_ALL ${LOCALE}
 
-ARG USERNAME=sambyeol
+ARG USERNAME=ocaml
 ARG HOMEDIR=/home
 ARG USE_OMZ=true
 COPY script-library/debian-*.sh /tmp/script-library/

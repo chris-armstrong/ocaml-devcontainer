@@ -1,6 +1,6 @@
-FROM debian:bookworm
+FROM debian:trixie
 
-LABEL org.opencontainers.image.source=https://github.com/sambyeol/ocaml-devcontainer
+LABEL org.opencontainers.image.source=https://github.com/chris-armstrong/ocaml-devcontainer
 
 USER root
 
@@ -25,7 +25,7 @@ RUN export FORMAT=$(echo ${LOCALE} | cut -f2 -d.) \
     && localedef -f ${FORMAT} -i ${INPUT} ${LOCALE}
 ENV LC_ALL ${LOCALE}
 
-ARG USERNAME=sambyeol
+ARG USERNAME=ocaml
 ARG HOMEDIR=/home
 ARG USE_OMZ=true
 COPY script-library/debian-*.sh /tmp/script-library/

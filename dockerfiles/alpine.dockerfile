@@ -1,6 +1,6 @@
-FROM alpine:3.21
+FROM alpine:3
 
-LABEL org.opencontainers.image.source=https://github.com/sambyeol/ocaml-devcontainer
+LABEL org.opencontainers.image.source=https://github.com/chris-armstrong/ocaml-devcontainer
 
 USER root
 
@@ -17,7 +17,7 @@ RUN apk add \
         sudo \
         zsh 
 
-ARG USERNAME=sambyeol
+ARG USERNAME=ocaml
 ARG HOMEDIR=/home
 ARG USE_OMZ=true
 COPY script-library/alpine-*.sh /tmp/script-library/
