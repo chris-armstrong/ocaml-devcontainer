@@ -6,8 +6,7 @@ group "default" {
 
 target "cross_platform" {
     platforms = [
-        "linux/amd64",
-        "linux/arm64"
+        "linux/amd64"
     ]
 }
 

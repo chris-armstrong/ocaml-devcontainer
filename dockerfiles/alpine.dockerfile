@@ -12,10 +12,18 @@ RUN apk add \
         git \
         gpg \
         m4 \
-        opam \
         openssh-client \
+        unzip \
         sudo \
         zsh 
+
+ARG TARGETARCH
+ARG TARGETOS
+ARG OPAM_VERSION=2.4.1
+
+RUN /bin/bash -c 'echo bash --version && declare -A target_arch_map=( ["amd64"]="x86_64" ["arm64"]="arm64") && \
+    curl -OL https://github.com/ocaml/opam/releases/download/${OPAM_VERSION}/opam-${OPAM_VERSION}-${target_arch_map[$TARGETARCH]}-${TARGETOS} && \
+    sudo install opam-${OPAM_VERSION}-${target_arch_map[$TARGETARCH]}-${TARGETOS} /usr/local/bin/opam'
 
 ARG USERNAME=ocaml
 ARG HOMEDIR=/home
