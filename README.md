@@ -7,13 +7,20 @@ Make a devcontainer setting file at `.devcontainer/devcontainer.json` in your pr
 ```json
 {
     "image": "ghcr.io/chris-armstrong/ocaml-devcontainer",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "version": "latest"
+        }
+    },
     "customizations": {
         "vscode": {
             "extensions": [
                 "ocamllabs.ocaml-platform"
             ]
         }
-    }
+    },
+    "remoteUser": "ocaml",
+    "updateRemoteUserUID": true
 }
 ```
 Then, reopen in container.
