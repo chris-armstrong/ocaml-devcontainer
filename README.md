@@ -1,12 +1,12 @@
 # Devcontainer with OCaml
 Pre-installed OCaml with OCaml package manager (`opam`) for [devcontainer](https://code.visualstudio.com/docs/remote/containers).
-You can find the images in `ghcr.io/sambyeol/ocaml-devcontainer`.
+You can find the images in `ghcr.io/chris-armstrong/ocaml-devcontainer`.
 
 ## Quickstart
 Make a devcontainer setting file at `.devcontainer/devcontainer.json` in your project.
 ```json
 {
-    "image": "ghcr.io/sambyeol/ocaml-devcontainer",
+    "image": "ghcr.io/chris-armstrong/ocaml-devcontainer",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -24,7 +24,7 @@ Tags are named by `<version>-<distribution>[-root]`.
 * There are various base OS distributions. available distributions are as follows:
   * `debian`: latest Debian (default)
   * `ubuntu`: latest Ubuntu LTS
-* `-root` images come without non-root user `sambyeol`.
+* `-root` images come without non-root user `ocaml`.
 
 ## Cross-compile Images
 All images are cross-compiled with `docker-buildx`.
