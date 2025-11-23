@@ -150,7 +150,7 @@ target "5_3_debian_root" {
     inherits = ["5_3_version", "debian", "root", "cross_platform"]
     tags = [
         "ghcr.io/chris-armstrong/ocaml-devcontainer:5.3.0-debian-root",
-        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.3-debian-root"
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.3-debian-root",
 
         "ghcr.io/chris-armstrong/ocaml-devcontainer:5.3.0-root",
         "ghcr.io/chris-armstrong/ocaml-devcontainer:5.3-root"
