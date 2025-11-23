@@ -58,7 +58,7 @@ target "latest_version" {
     }
 }
 
-target "5_3" {
+target "5_3_version" {
     args = {
         OCAML_VERSION = "5.3.0"
     }
