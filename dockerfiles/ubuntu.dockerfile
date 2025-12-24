@@ -8,6 +8,9 @@ ARG TARGETARCH
 ARG TARGETOS
 ARG OPAM_VERSION=2.4.1
 
+# ubuntu user in Ubuntu 24+ uses the UID 1000, which we want for our USERNAME below.
+RUN userdel -r ubuntu || true
+
 RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y --no-install-recommends \
