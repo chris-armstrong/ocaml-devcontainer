@@ -21,13 +21,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
-      - uses: docker/bake-action/subaction/list-targets@v6
-        id: find-targets
+      - uses: docker/bake-action/subaction/matrix@v6
+        id: generate-matrix
         with:
           target: default
 
     outputs:
-      targets: ${{ steps.find-targets.outputs.targets }}
+      matrix: ${{ steps.configure-build.outputs.targets }}
 
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -39,8 +39,9 @@ jobs:
       - configure-build
     
     strategy:
+      fail-fast: false
       matrix:
-        target: ${{ fromJson(needs.configure-build.outputs.targets) }}
+        target: ${{ fromJson(needs.configure-build.outputs.matrix) }}
 
     steps:
       - uses: actions/checkout@v5
