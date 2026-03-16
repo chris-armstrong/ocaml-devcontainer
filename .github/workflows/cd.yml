@@ -5,10 +5,12 @@ on:
     branches:
       - main
     paths-ignore:
-      - '.devcontainer/**'
-      - '.github/**'
-      - 'README.md'
-      - 'LICENSE'
+      - ".devcontainer/**"
+      - ".github/**"
+      - "README.md"
+      - "LICENSE"
+  schedule:
+    - cron: "12 3 * * 0"
 
 env:
   REGISTRY: ghcr.io
@@ -37,7 +39,7 @@ jobs:
 
     needs:
       - configure-build
-    
+
     strategy:
       fail-fast: false
       matrix:
@@ -56,10 +58,9 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - uses: docker/bake-action@v6
         with:
           files: docker-bake.hcl
           push: true
           targets: ${{ matrix.target }}
-    
