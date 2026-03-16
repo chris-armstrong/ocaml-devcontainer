@@ -35,8 +35,10 @@ RUN /tmp/script-library/alpine-create-user.sh ${USERNAME} \
 
 USER ${USERNAME}
 ARG OCAML_VERSION=
-RUN opam init --disable-sandbox --yes --compiler=${OCAML_VERSION}
-ENV OPAM_SWITCH_PREFIX="${HOMEDIR}/${USERNAME}/.opam/${OCAML_VERSION}"
+RUN opam init --disable-sandbox --yes --bare
+RUN opam repo add --set-default alpha git+https://github.com/kit-ty-kate/opam-alpha-repository.git
+RUN opam switch create default ${OCAML_VERSION}
+ENV OPAM_SWITCH_PREFIX="${HOMEDIR}/${USERNAME}/.opam/default"
 ENV CAML_LD_LIBRARY_PATH="${OPAM_SWITCH_PREFIX}/lib/stublibs:${OPAM_SWITCH_PREFIX}/lib/ocaml/stublibs:${OPAM_SWITCH_PREFIX}/lib/ocaml"
 ENV OCAML_TOPLEVEL_PATH="${OPAM_SWITCH_PREFIX}/lib/toplevel"
 ENV MANPATH="${MANPATH}:${OPAM_SWITCH_PREFIX}/man"
