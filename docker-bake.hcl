@@ -1,6 +1,7 @@
 group "default" {
     targets = [
         "latest",
+        "5_5_alpha1",
         "5_3"
     ]
 }
@@ -41,6 +42,18 @@ group "latest" {
     ]
 }
 
+group "5_5_alpha1" {
+    targets = [
+        "5_5_alpha1_debian",
+        "5_5_alpha1_debian_root",
+        "5_5_alpha1_ubuntu",
+        "5_5_alpha1_ubuntu_root",
+        "5_5_alpha1_alpine",
+        "5_5_alpha1_alpine_root"
+    ]
+
+}
+
 group "5_3" {
     targets = [
         "5_3_debian",
@@ -61,6 +74,12 @@ target "latest_version" {
 target "5_3_version" {
     args = {
         OCAML_VERSION = "5.3.0"
+    }
+}
+
+target "5_5_alpha1_version" {
+    args = {
+        OCAML_VERSION = "5.5.0~alpha1"
     }
 }
 
@@ -134,6 +153,7 @@ target "latest_alpine_root" {
     ]
 }
 
+
 target "5_3_debian" {
     inherits = ["5_3_version", "debian", "cross_platform"]
     tags =[
@@ -187,6 +207,65 @@ target "5_3_alpine_root" {
     tags = [
         "ghcr.io/chris-armstrong/ocaml-devcontainer:5.3.0-alpine-root",
         "ghcr.io/chris-armstrong/ocaml-devcontainer:5.3-alpine-root"
+
+    ]
+}
+
+
+
+target "5_5_alpha1_debian" {
+    inherits = ["5_5_alpha1_version", "debian", "cross_platform"]
+    tags =[
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5.0_alpha1-debian",
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5-debian",
+
+
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5.0_alpha1",
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5"
+    ]
+}
+
+target "5_5_alpha1_debian_root" {
+    inherits = ["5_5_alpha1_version", "debian", "root", "cross_platform"]
+    tags = [
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5.0_alpha1-debian-root",
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5-debian-root",
+
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5.0_alpha1-root",
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5-root"
+    ]
+}
+
+target "5_5_alpha1_ubuntu" {
+    inherits = ["5_5_alpha1_version", "ubuntu", "cross_platform"]
+    tags =[
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5.0_alpha1-ubuntu",
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5-ubuntu"
+    ]
+}
+
+target "5_5_alpha1_ubuntu_root" {
+    inherits = ["5_5_alpha1_version", "ubuntu", "root", "cross_platform"]
+    tags = [
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5.0_alpha1-ubuntu-root",
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5-ubuntu-root"
+    ]
+}
+
+target "5_5_alpha1_alpine" {
+    inherits = ["5_5_alpha1_version", "alpine", "cross_platform"]
+    tags =[
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5.0_alpha1-alpine",
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5-alpine"
+
+    ]
+}
+
+target "5_5_alpha1_alpine_root" {
+    inherits = ["5_5_alpha1_version", "alpine", "root", "cross_platform"]
+    tags = [
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5.0_alpha1-alpine-root",
+        "ghcr.io/chris-armstrong/ocaml-devcontainer:5.5-alpine-root"
 
     ]
 }
