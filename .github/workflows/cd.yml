@@ -30,7 +30,7 @@ jobs:
           target: default
 
     outputs:
-      matrix: ${{ steps.configure-build.outputs.targets }}
+      matrix: ${{ steps.generate-matrix.outputs.targets }}
 
   build-and-deploy:
     runs-on: ubuntu-latest
