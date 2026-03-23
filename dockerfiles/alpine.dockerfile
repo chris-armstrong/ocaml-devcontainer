@@ -44,7 +44,10 @@ ENV OCAML_TOPLEVEL_PATH="${OPAM_SWITCH_PREFIX}/lib/toplevel"
 ENV MANPATH="${MANPATH}:${OPAM_SWITCH_PREFIX}/man"
 ENV PATH="${OPAM_SWITCH_PREFIX}/bin:${PATH}"
 
+ARG INSTALL_LSP=true
 RUN opam install --yes \
         dune \
-        ocaml-lsp-server \
-        ocamlformat
+        ocamlformat \
+    && if [ "$INSTALL_LSP" = "true" ]; then \
+        opam install --yes ocaml-lsp-server; \
+    fi

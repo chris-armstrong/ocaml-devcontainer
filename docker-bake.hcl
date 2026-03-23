@@ -80,6 +80,7 @@ target "5_3_version" {
 target "5_5_alpha1_version" {
     args = {
         OCAML_VERSION = "5.5.0~alpha1"
+        INSTALL_LSP = "false"
     }
 }
 
